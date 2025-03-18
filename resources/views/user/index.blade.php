@@ -9,7 +9,12 @@
     <h1>Users</h1>
 
     @foreach ($users as $user)
-        <p>{{ $user->name }} ({{ $user->email }})</p>
+        <p>
+            <a href="/user/{{ $user->id }}">
+                {{ $user->name }} ({{ $user->email }})
+            </a>
+        </p>
     @endforeach
+    <a href="/users/create">Incluir usuário</a>
 </body>
 </html>
