@@ -9,12 +9,33 @@
     <h1>
         Detalhes do usuário
     </h1>
-    <p>
-        Nome: {{ $user->name }}
-    </p>
-    <p>
-        E-mail: {{ $user->email }}
-    </p>
+    <form action="/user/{{ $user->id }}" method="POST">
+        @method('PUT')
+        @csrf
+        <p>
+            Nome: 
+            <input
+                type="text"
+                name="name"
+                value="{{ $user->name }}"
+            >
+        </p>
+        <p>
+            E-mail:
+            <input
+                type="text"
+                name="email"
+                value="{{ $user->email }}"
+            >
+        </p>
+        <input type="submit" value="Salvar">
+    </form>
+
+    <form action="/user/{{ $user->id }}" method="POST">
+        @method('DELETE')
+        @csrf
+        <input type="submit" value="Excluir">
+    </form>
     <a href="/users">
         Voltar
     </a>

@@ -46,6 +46,30 @@ class UserController extends Controller
     }
 
     /**
+     * Update.
+     */
+    public function update(Request $request, User $user): RedirectResponse
+    {
+        // Validate the request...
+ 
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
+ 
+        return redirect('/users');
+    }
+
+    /**
+     * Delete.
+     */
+    public function delete(User $user): RedirectResponse
+    {
+        $user->delete();
+ 
+        return redirect('/users');
+    }
+
+    /**
      * Show the profile for a given user.
      */
     public function details(string $id): View
