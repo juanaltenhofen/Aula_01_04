@@ -45,4 +45,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Get the phones for the user.
+     */
+    public function phones(): HasMany
+    {
+        return $this->hasMany(Phone::class);
+    }
 }
