@@ -15,7 +15,7 @@ class UserController extends Controller
     public function index(): View
     {
         return view('user.index', [
-            'users' => User::all()
+            'users' => User::with('phones')->get()
         ]);
     }
 
@@ -72,10 +72,10 @@ class UserController extends Controller
     /**
      * Show the profile for a given user.
      */
-    public function details(string $id): View
+    public function details(User $user): View
     {
-        return view('user.details', [
-            'user' => User::findOrFail($id)
+        return view('user.show', [
+            'user' => $user->load('phones')
         ]);
     }
 }

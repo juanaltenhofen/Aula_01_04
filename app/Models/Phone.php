@@ -12,13 +12,15 @@ class Phone extends Model
      * @var list<string>
      */
     protected $fillable = [
+        'user_id',
         'number',
+        'type'
     ];
 
     /**
      * Get the user that owns the phone.
      */
-    public function user(): BelongsTo
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
